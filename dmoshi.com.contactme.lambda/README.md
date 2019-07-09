@@ -41,7 +41,7 @@
 
 <br>
 
-The above commands will create an AWS CloudFormation stack with the following resources on your AWS environment :- 
+The above commands will create an AWS CloudFormation stack with the following resources on your environment :- 
 
 * IAM Role with permissions to publish messages to an SNS topic, this will be used by the lambda function.
 * One SNS Topic
@@ -50,14 +50,15 @@ The above commands will create an AWS CloudFormation stack with the following re
 * An AWS API Gateway of type LAMBDA_PROXY which will trigger the above function over HTTP POST 
 
 
+<br>
 
 #### _(C) OTHER KEY CONFIGURATIONS ON AWS_ 
 
 <br>
 
-> * Static website for dmoshi.com is hosted on S3 as static website with content served via a CloudFront distributiton (CDN).
-> * The custom domain dmoshi.com is hosted on Route53 and points to the cloud distribution.
-> * The Cloudfront distribution is configured to serve content over HTTPS using a free AWS Cerficate Manager (ACM) as long as you own your domain.
+* Static website for dmoshi.com is hosted on S3 as static website with content served via a CloudFront distributiton (CDN).
+* The custom domain dmoshi.com is hosted on Route53 and points to the cloud distribution.
+* The Cloudfront distribution is configured to serve content over HTTPS using a free AWS Cerficate Manager (ACM) as long as you own your domain.
 
 <br>
 
