@@ -3,7 +3,7 @@
 
 #### Overview
 
-This application is designed as part of my website [dmoshi.com](https://dmoshi.com) hosted on AWS. Whenever a visitor clicks on [Contact Me](https://dmoshi.com/#contact) link, a form is presented to write a message that will be routed to my inbox instantly. Using the power of serverless architecture I'm able to deploy a resilient, load balanced appliation that can automatically scale on demand without having to deal with infrastructure provisioning and configurations. With CloudFormation in the mix as __Infrastructure as Code__ I can version and maintain the entire architecture seamlessly. 
+This application is designed as part of my website [dmoshi.com](https://dmoshi.com) hosted on AWS. Whenever a visitor clicks on [Contact Me](https://dmoshi.com/#contact) link, a form is presented to write a message that will be routed to my inbox instantly. Using the power of serverless architecture I'm able to deploy a resilient, load balanced appliation that can automatically scale on demand without having to deal with infrastructure provisioning and configurations. With CloudFormation playing the role of __Infrastructure as Code__ I can version and maintain the entire architecture seamlessly. 
 
 #### _(A) ARCHITECTURE DIAGRAM_
 
