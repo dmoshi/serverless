@@ -4,3 +4,4 @@ package.yml
 dependency-reduced-pom.xml
 .project
 .classpath
+.DS_Store
