@@ -3,3 +3,5 @@
 
 ### Architecture
 
+![](/src/main/resources/aarchitecture_contactme_transparent.jpg "architecture")
+
