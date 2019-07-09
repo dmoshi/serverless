@@ -1,0 +1,32 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Contact Me Function for dmoshi.com
+Resources:
+  DMoshiContactMe:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.dmoshi.lambda.contactme.ContactMeFunctionHandler::handleRequest
+      Runtime: java8
+      Timeout: 15
+      MemorySize: 512
+      CodeUri: target/contactme-lambda-1.0.0-SNAPSHOT.jar
+      Policies:
+        - SNSPublishMessagePolicy:
+            TopicName: !GetAtt DMoshiContactMeSNS.TopicName
+      Environment:
+        Variables:
+          SNS_TOPIC_ARN: !Ref DMoshiContactMeSNS
+          REGION_NAME: us-east-1
+          SUBJECT: 'A message from dmoshi.com visitor'
+      Events:
+        DMoshiContactMeAPI:
+          Type: Api
+          Properties:
+            Path: /contactme 
+            Method: POST
+  DMoshiContactMeSNS:
+    Type: AWS::SNS::Topic
+    Properties:
+      Subscription:
+        - Endpoint: dannyenock@gmail.com
+          Protocol: email
