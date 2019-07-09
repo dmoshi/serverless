@@ -17,7 +17,7 @@
    * AWS CLI and AWS SAM CLI installed.
    * AWS credentials with necessary permissions to create and update Lambda, IAM Role, SNS Topic and Subscription, CloudFormation Stack creation and updates. 
    * Credentials added to path **{user_home}/.aws/credentials** on mac, unix or windows. 
-   * An AWS S3 bucket that will be used to store Lambda function binaries. 
+   * An A**WS S3 bucket** that will be used to store Lambda function binaries. 
    * Steps to do the above steps can easily be found online.
  
  2. To build and deploy using aws sam cli perform the following commands at the root folder of this codebase :- 
@@ -41,13 +41,13 @@
 
 <br>
 
-The above commands will create an AWS CloudFormation stack with the following resources on your environment :- 
+The above commands will create an **AWS CloudFormation stack** with the following resources on your environment :- 
 
-* IAM Role with permissions to publish messages to an SNS topic, this will be used by the lambda function.
-* One SNS Topic
-* One SNS Subscription bound to the above topic, protocol is email with email address specified in serverless.yml 
+* **IAM Role** with permissions to publish messages to an SNS topic, this will be used by the lambda function
+* One **SNS Topic**
+* One **SNS Subscription** bound to the above topic, protocol is email with email address specified in **serverless.yml** 
 * An AWS Lambda function with a binding to the IAM role above
-* An AWS API Gateway of type LAMBDA_PROXY which will trigger the above function over HTTP POST 
+* An AWS API Gateway of type **LAMBDA_PROXY** which will trigger the above function over **HTTP POST** 
 
 
 <br>
@@ -56,10 +56,10 @@ The above commands will create an AWS CloudFormation stack with the following re
 
 <br>
 
-* Static website for dmoshi.com is hosted on S3 as static website with content served via a CloudFront distributiton (CDN).
-* The custom domain dmoshi.com is hosted on Route53 and points to the CloudFront distribution.
-* The Cloudfront distribution is configured to serve content over HTTPS using a free AWS Cerficate Manager (ACM) as long as you own your domain.
-* A subdomain (i.e api.dmoshi.com) is configured on Route53 to trigger the above created API Gateway over HTTPS, this endpoint is being invoked by the static website using jQuery. 
+* Static website for **dmoshi.com** is hosted on **S3 as static website** with content served via a **CloudFront distributiton (CDN)**.
+* The custom domain **dmoshi.com** is hosted on **Route53** and points to the CloudFront distribution.
+* The **Cloudfront distribution** is configured to serve content over **HTTPS** using a free **AWS Cerficate Manager (ACM)** as long as you own your domain.
+* A subdomain **(i.e api.dmoshi.com)** is configured on Route53 to trigger the above created **API Gateway over HTTPS**, this endpoint is being invoked by the static website using **jQuery**. 
 
 <br>
 
