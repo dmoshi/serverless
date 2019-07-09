@@ -1,6 +1,10 @@
 
 ### SERVERLESS ARCHITECTURE FOR CONTACT ME SECTION OF MY WEBSITE
 
+#### Overview
+
+This application is designed as part of my website [dmoshi.com](https://dmoshi.com) hosted on AWS. Whenever a visitor clicks on [Contact Me](https://dmoshi.com/#contact) link, a form is presented to write a message that will be routed to my inbox instantly. Using the power of serverless architecture I'm able to deploy a resiliant, load balanced appliation that can automatically scale on demand. 
+
 #### _(A) ARCHITECTURE DIAGRAM_
 
 <br>
