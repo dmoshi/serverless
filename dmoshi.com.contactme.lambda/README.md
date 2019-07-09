@@ -23,10 +23,14 @@
  2. To build and deploy using aws sam cli perform the following commands at the root folder of this codebase :- 
  
    * `mvn clean package` _(You may want to skip tests by adding argument -DskipTests or edit the unit test file and put your SNS ARN and REGION to avoid build failure)_
-   * `sam package   --template-file serverless.yml   --output-template-file package.yml   --s3-bucket {your_s3_package}`
-   *`sam deploy   --template-file package.yml   --stack-name {any_name_of_choice}   --capabilities CAPABILITY_IAM`
+   * `sam package   --template-file serverless.yml   --output-template-file package.yml   --s3-bucket {your_s3_package}` .
+   *`sam deploy   --template-file package.yml   --stack-name {any_name_of_choice}   --capabilities CAPABILITY_IAM` .
 
 <br>
+
+> * The above commands will create the following resources on your AWS environment :- 
+
+
 
 #### _(C) OTHER KEY CONFIGURATIONS ON AWS_ 
 
