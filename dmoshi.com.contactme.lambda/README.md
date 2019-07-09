@@ -12,10 +12,11 @@
 #### _BUILDING AND DEPLOYONG THE ABOVE ARCHITECTURE_
 
 1. What you will need :- 
+   * dsfadsfsdf
 
 <br>
 
-#### _KEY CONFIGURATIONS ON AWS_ 
+#### _OTHER KEY CONFIGURATIONS ON AWS_ 
 
 <br>
 
