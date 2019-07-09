@@ -2,4 +2,4 @@
 
 ## Applications in this repository
 
-### Contact Me Lambda function (for contact me section of my website dmoshi.com) 
+1. Contact Me Lambda function (for contact me section of my website dmoshi.com) 
