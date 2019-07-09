@@ -1,7 +1,7 @@
 
 ### SERVERLESS ARCHITECTURE FOR CONTACT ME SECTION OF MY WEBSITE
 
-#### A. _ARCHITECTURE DIAGRAM_
+#### _(A) ARCHITECTURE DIAGRAM_
 
 <br>
 
@@ -9,14 +9,18 @@
 
 <br>
 
-#### B. _BUILDING AND DEPLOYONG THE ABOVE ARCHITECTURE_
+#### _(B) BUILDING AND DEPLOYONG THE ABOVE ARCHITECTURE_
 
 1. What you will need :- 
-   * dsfadsfsdf
+
+   * Maven installed
+   * AWS CLI and AWS SAM CLI installed 
+   * AWS credentials with necessary permissions to create and update Lambda, IAM Role, SNS Topic and Subscription, CloudFormation Stack creation and updates. 
+   
 
 <br>
 
-#### C. _OTHER KEY CONFIGURATIONS ON AWS_ 
+#### _(C) OTHER KEY CONFIGURATIONS ON AWS_ 
 
 <br>
 
