@@ -34,6 +34,8 @@
    ~~~
    
    <br>
+   Then,
+   <br>
    
    ~~~
    sam deploy   --template-file package.yml   --stack-name {any_name_of_choice}   --capabilities CAPABILITY_IAM
