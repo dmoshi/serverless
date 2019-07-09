@@ -33,9 +33,7 @@
    sam package   --template-file serverless.yml   --output-template-file package.yml   --s3-bucket {your_s3_package} 
    ~~~
    
-   <br>
    Then,
-   <br>
    
    ~~~
    sam deploy   --template-file package.yml   --stack-name {any_name_of_choice}   --capabilities CAPABILITY_IAM
