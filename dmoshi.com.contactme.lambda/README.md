@@ -57,8 +57,9 @@ The above commands will create an AWS CloudFormation stack with the following re
 <br>
 
 * Static website for dmoshi.com is hosted on S3 as static website with content served via a CloudFront distributiton (CDN).
-* The custom domain dmoshi.com is hosted on Route53 and points to the cloud distribution.
+* The custom domain dmoshi.com is hosted on Route53 and points to the CloudFront distribution.
 * The Cloudfront distribution is configured to serve content over HTTPS using a free AWS Cerficate Manager (ACM) as long as you own your domain.
+* A subdomain (i.e api.dmoshi.com) is configured on Route53 to trigger the above created API Gateway over HTTPS, this endpoint is being invoked by the static website using jQuery. 
 
 <br>
 
