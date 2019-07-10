@@ -1,25 +1,17 @@
 package com.dmoshi.lambda.contactme;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
-import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 import com.amazonaws.services.sns.AmazonSNS;
 import com.amazonaws.services.sns.AmazonSNSClientBuilder;
 import com.amazonaws.services.sns.model.PublishRequest;
 import com.amazonaws.services.sns.model.PublishResult;
 import com.dmoshi.lambda.contactme.model.ContactMe;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ContactMeFunctionHandler
-		implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
+		implements  RequestHandler<ContactMe, Object>{
 
-	private final ObjectMapper mapper = new ObjectMapper();
 	AmazonSNS snsClient = null;
 
 	public ContactMeFunctionHandler() {
@@ -31,22 +23,16 @@ public class ContactMeFunctionHandler
 	}
 
 	@Override
-	public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent event, Context context) {
+	public Object handleRequest(ContactMe input, Context context) {
 		String topicArn = System.getenv("SNS_TOPIC_ARN");
 		String subject = System.getenv("SUBJECT");
-		APIGatewayProxyResponseEvent response = new APIGatewayProxyResponseEvent();
-		Map<String, String> headers = new HashMap<>();
-		headers.put("Access-Control-Allow-Origin", "*");
-		headers.put("Access-Control-Allow-Credentials", "false");
-		response.setHeaders(headers);
+		Response response = new Response();
 		try {
-			String eventRecv = event.getBody();
-			if (eventRecv == null) {
+			if (input == null) {
 				response.setStatusCode(400);
-				response.setBody(mapper.writeValueAsString("Request body is null"));
+				response.setMessage("Request body is null");
 			} else {
-				context.getLogger().log("Body: " + eventRecv);
-				ContactMe input = mapper.readValue(eventRecv, ContactMe.class);
+				context.getLogger().log("Body: " + input.toString());
 				context.getLogger().log("Input: " + input);
 				final PublishRequest publishRequest = new PublishRequest(topicArn,
 						input.getSendersEmail() + " : " + input.getMessage());
@@ -54,22 +40,45 @@ public class ContactMeFunctionHandler
 				final PublishResult publishResponse = snsClient.publish(publishRequest);
 				if (publishResponse.getMessageId() != null) {
 					response.setStatusCode(200);
-					response.setBody(mapper.writeValueAsString(publishResponse.toString()));
+					response.setMessage("sent successfully");
+					response.setMessageId(publishResponse.getMessageId());
 				}
 
 			}
 		} catch (Throwable ex) {
-
 			context.getLogger().log("Notification not sent. Error message: " + ex.getMessage());
 			response.setStatusCode(500);
-			try {
-				response.setBody(mapper.writeValueAsString("EXCEPTION : " + ex.getMessage()));
-			} catch (JsonProcessingException e) {
-				e.printStackTrace();
-			}
+				response.setMessage("EXCEPTION : " + ex.getMessage());
+			 
 			ex.printStackTrace();
 
 		}
 		return response;
+	}
+	
+	class Response {
+		String messageId;
+		int  statusCode;
+		String message;
+		
+		public String getMessageId() {
+			return messageId;
+		}
+		public void setMessageId(String messageId) {
+			this.messageId = messageId;
+		}
+		public int getStatusCode() {
+			return statusCode;
+		}
+		public void setStatusCode(int status) {
+			this.statusCode = status;
+		}
+		public String getMessage() {
+			return message;
+		}
+		public void setMessage(String message) {
+			this.message = message;
+		}
+		
 	}
 }

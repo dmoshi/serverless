@@ -7,27 +7,21 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.amazonaws.services.lambda.runtime.Context;
-import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
-import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
+import com.dmoshi.lambda.contactme.ContactMeFunctionHandler.Response;
 import com.dmoshi.lambda.contactme.model.ContactMe;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * A simple test harness for locally invoking your Lambda function handler.
  */
 public class ContactMeFunctionHandlerTest {
 
-    private static APIGatewayProxyRequestEvent input;
-    private static final ObjectMapper mapper = new ObjectMapper();
+    private static ContactMe input;
 
     @BeforeClass
     public static void createInput() throws IOException {
-        ContactMe inputModel = new ContactMe();
-        inputModel.setMessage("Hello Daniel");
-        inputModel.setSendersEmail("visitor@domain.com");
-        String body = mapper.writeValueAsString(inputModel);
-        input = new APIGatewayProxyRequestEvent();
-        input.withBody(body);
+        input = new ContactMe();
+        input.setMessage("Hello Daniel");
+        input.setSendersEmail("visitor@domain.com");
         System.setProperty("SNS_TOPIC_ARN", "<<arn:yours>>");
         System.setProperty("REGION_NAME", "<<region>>");
 
@@ -43,7 +37,7 @@ public class ContactMeFunctionHandlerTest {
     public void testContactMeFunctionHandler() {
         ContactMeFunctionHandler handler = new ContactMeFunctionHandler();
         Context ctx = createContext();
-        APIGatewayProxyResponseEvent output = handler.handleRequest(input, ctx);
-        Assert.assertEquals(Integer.valueOf(200), output.getStatusCode());
+        Response output = (Response) handler.handleRequest(input, ctx);
+        Assert.assertEquals(200, output.getStatusCode());
     }
 }
