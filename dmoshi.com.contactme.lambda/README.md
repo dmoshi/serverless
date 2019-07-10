@@ -49,7 +49,7 @@ The above commands will create an **AWS CloudFormation stack** with the followin
 
 * **IAM Role** with permissions to publish messages to an SNS topic, this will be used by the lambda function
 * One **SNS Topic**
-* One **SNS Subscription** bound to the above topic, protocol is email with email address specified in **serverless.yml** 
+* One **SNS Subscription** bound to the above topic, protocol is __email__ with email address specified in **serverless.yml** 
 * An AWS Lambda function with a binding to the IAM role above
 * An AWS API Gateway of type **LAMBDA_PROXY** which will trigger the above function over **HTTP POST** 
 
