@@ -13,7 +13,7 @@ This application is designed as part of [my website](https://dmoshi.com) hosted 
 
 <br>
 
-#### _(B) BUILDING AND DEPLOYONG THE ABOVE ARCHITECTURE_
+#### _(B) BUILDING AND DEPLOY USING AWS SAM_
 
 1. What you will need :- 
 
